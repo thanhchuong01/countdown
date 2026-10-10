@@ -1,127 +1,213 @@
-@import url('//fonts.googleapis.com/css2?family=Ephesis&family=Jaro:opsz@6..72&family=Monsieur+La+Doulaise&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('//fonts.googleapis.com/css2?family=Ephesis&family=Jaro:opsz@6..72&family=Monsieur+La+Doulaise&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('//fonts.googleapis.com/css2?family=Ephesis&family=Jaro:opsz@6..72&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    /* position: relative; */
     margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 98vh;
-    background-color: #f0f0f0;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background-color: #7a1208;
     font-family: Arial, sans-serif;
-    background-image: url('./assets/background2.jpg');
+    background-image: url('./assets/background-main-1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.text{
-    margin: 0 auto;
-    margin-top: 1rem;
-    /* max-width: 800px;
-    max-height: max-content; */
-    color: #f51a16;
-    font-weight: 700;
-    text-shadow: 4px 4px 3px #333;
-    font-size: 11rem;
-    
+@media (max-width: 1024px) {
+    body {
+        background-image: url('./assets/background-main-2.png');
+    }
 }
 
-.jaro-font{
+@media (max-width: 640px) {
+    body {
+        background-image: url('./assets/background-main-3.png');
+    }
+}
+
+.fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.text,
+.countdown {
+    position: relative;
+    z-index: 2;
+}
+
+.text {
+    margin: 0.4rem auto 2.5rem;
+    color: #ffe7a3;
+    font-weight: 700;
+    text-shadow: 0 3px 0 #6b120c, 0 8px 18px rgba(0, 0, 0, 0.35);
+    font-size: clamp(3.2rem, 11vw, 8rem);
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    word-spacing: 0.55em;
+}
+
+.jaro-font {
     font-family: "Jaro", serif;
     font-optical-sizing: auto;
     font-weight: 100;
     font-style: normal;
-    font-size: 7rem;
-  }
-
+}
 
 .countdown {
     position: relative;
     display: flex;
-    gap: 10px;
-   
-    color: #333;
-    width: 100%;
+    gap: 1.1rem;
+    color: #fff6d4;
+    width: auto;
+    max-width: 94vw;
     justify-content: center;
-    margin: 20px;
-    max-width: 800px;
+    margin: 0;
+}
+
+.countdown.finished {
+    font-family: "Ephesis", serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    text-align: center;
+    color: #ffe7a3;
+    text-shadow: 0 3px 0 #6b120c, 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.countdown-box {
+    flex: 0 0 auto;
+    min-width: 0;
 }
 
 .time-box {
-    padding: 2rem 1rem 0.2rem 1rem;; 
+    --box-pad: 0.7rem;
+    padding: 0.45rem var(--box-pad);
     border-radius: 5px;
-    background-color: #f51a16;
-    color: whitesmoke;
-    margin: 0px 25px;
+    background: linear-gradient(180deg, #fff8e4 0%, #f3d27a 100%);
+    color: #8b1a12;
+    margin: 0 auto;
     text-align: center;
-    width: 9rem;
-    box-shadow: 5px 5px 5px rgb(243, 240, 45);
+    width: calc(1.5em + var(--box-pad) * 2);
+    box-sizing: border-box;
+    font-size: clamp(3.2rem, 8vw, 5.2rem);
+    line-height: 1;
+    box-shadow: 0 6px 0 rgba(107, 18, 12, 0.45);
+    font-variant-numeric: tabular-nums;
 }
 
-.day{
-    border-radius: 27% 60% 5px 10px;
+.time-box > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1em;
 }
 
-.hour{
-    border-radius: 66% 33% 5px 10px;
+.digit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.5em;
+    height: 1em;
+    flex: 0 0 0.5em;
 }
 
-.minute{
-    border-radius: 99% 50% 5px 10px;
+.day {
+    border-radius: 27% 60% 8px 12px;
 }
 
-.second{
-    border-radius: 35% 45% 5px 10px;
+.hour {
+    border-radius: 66% 33% 8px 12px;
 }
 
-.time-unit{
-    font-size: 3rem;
-    color: rgb(241, 166, 66);
+.minute {
+    border-radius: 99% 50% 8px 12px;
+}
+
+.second {
+    border-radius: 35% 45% 8px 12px;
+}
+
+.time-unit {
+    margin-top: 0.35rem;
+    font-size: clamp(1rem, 2.4vw, 1.55rem);
+    color: #fff4d0;
     text-align: center;
-    text-shadow: 2px 2px  rgb(99, 5, 5);
+    text-shadow: 0 2px 0 #6b120c;
 }
 
 .montserrat-font {
     font-family: "Montserrat", serif;
     font-optical-sizing: auto;
-   
     font-style: normal;
-  }
-  
+}
 
 .ephesis-regular {
     font-family: "Ephesis", serif;
-   
     font-style: normal;
-
 }
 
+.sound-toggle {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 3;
+    width: 3.25rem;
+    height: 3.25rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: #8b1a12;
+    background: linear-gradient(180deg, #fff8e4 0%, #f3d27a 100%);
+    box-shadow: 0 6px 0 rgba(107, 18, 12, 0.45);
+}
 
-@media (max-width: 768px) {
-    .time-box {
-        font-size: 1.5em;
-        padding: 15px;
-    }
-    .time-unit {
-        font-size: 0.8em;
-    }
-    .text {
-        font-size: 5rem;
-    }
+.sound-toggle svg {
+    width: 1.55rem;
+    height: 1.55rem;
+}
+
+.sound-toggle .icon-on {
+    display: none;
+}
+
+.sound-toggle.is-on .icon-muted {
+    display: none;
+}
+
+.sound-toggle.is-on .icon-on {
+    display: block;
+}
+
+.youtube-player {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
 }
 
 @media (max-width: 480px) {
+    .countdown {
+        gap: 0.55rem;
+    }
+
     .time-box {
-        font-size: 1em;
-        padding: 10px;
-    }
-    .time-unit {
-        font-size: 0.6em;
-    }
-    .text {
-        font-size: 3rem;
+        --box-pad: 0.5rem;
+        padding: 0.35rem var(--box-pad);
     }
 }
