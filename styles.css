@@ -1,4 +1,4 @@
-@import url('//fonts.googleapis.com/css2?family=Ephesis&family=Jaro:opsz@6..72&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('//fonts.googleapis.com/css2?family=Ephesis&family=Jaro:opsz@6..72&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@700&display=swap');
 
 body {
     margin: 0;
@@ -66,12 +66,13 @@ body {
 .countdown {
     position: relative;
     display: flex;
-    gap: 1.1rem;
+    gap: 3.5rem;
     color: #fff6d4;
     width: auto;
     max-width: 94vw;
     justify-content: center;
     margin: 0;
+    padding-bottom: 2rem;
 }
 
 .countdown.finished {
@@ -81,26 +82,25 @@ body {
     text-align: center;
     color: #ffe7a3;
     text-shadow: 0 3px 0 #6b120c, 0 8px 18px rgba(0, 0, 0, 0.35);
+    padding-bottom: 0;
 }
 
 .countdown-box {
+    position: relative;
     flex: 0 0 auto;
-    min-width: 0;
 }
 
 .time-box {
-    --box-pad: 0.7rem;
-    padding: 0.45rem var(--box-pad);
-    border-radius: 5px;
-    background: linear-gradient(180deg, #fff8e4 0%, #f3d27a 100%);
-    color: #8b1a12;
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
-    width: calc(1.5em + var(--box-pad) * 2);
+    width: max-content;
     box-sizing: border-box;
+    color: #fff8e4;
+    font-family: "Roboto Mono", monospace;
+    font-weight: 700;
     font-size: clamp(3.2rem, 8vw, 5.2rem);
     line-height: 1;
-    box-shadow: 0 6px 0 rgba(107, 18, 12, 0.45);
+    text-shadow: 0 3px 0 #6b120c, 0 8px 16px rgba(0, 0, 0, 0.35);
     font-variant-numeric: tabular-nums;
 }
 
@@ -115,29 +115,18 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 0.5em;
+    width: 1ch;
     height: 1em;
-    flex: 0 0 0.5em;
-}
-
-.day {
-    border-radius: 27% 60% 8px 12px;
-}
-
-.hour {
-    border-radius: 66% 33% 8px 12px;
-}
-
-.minute {
-    border-radius: 99% 50% 8px 12px;
-}
-
-.second {
-    border-radius: 35% 45% 8px 12px;
+    flex: 0 0 1ch;
 }
 
 .time-unit {
-    margin-top: 0.35rem;
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 0.35rem);
+    transform: translateX(-50%);
+    margin-top: 0;
+    white-space: nowrap;
     font-size: clamp(1rem, 2.4vw, 1.55rem);
     color: #fff4d0;
     text-align: center;
@@ -203,11 +192,6 @@ body {
 
 @media (max-width: 480px) {
     .countdown {
-        gap: 0.55rem;
-    }
-
-    .time-box {
-        --box-pad: 0.5rem;
-        padding: 0.35rem var(--box-pad);
+        gap: 1.75rem;
     }
 }
